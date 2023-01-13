@@ -7,7 +7,15 @@ p {
     margin: 0;
 }
 
+li {
+    padding: 10px;
+    border-radius: 5px;
+}
 
+li:hover {
+    background-color: #ddd;
+    cursor: pointer;
+}
 
 li .todo {
     flex: 0 0 20px;
