@@ -17,6 +17,6 @@ li .todo {
     border: 2px solid #333;
 }
 
-li.todo.done {
+li .todo.done {
     background-color: #333;
 }

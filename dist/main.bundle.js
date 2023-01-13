@@ -82,7 +82,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "ul {\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\np {\r\n    margin: 0;\r\n}\r\n\r\n\r\n\r\nli .todo {\r\n    flex: 0 0 20px;\r\n    height: 20px;\r\n    border-radius: 30px;\r\n    margin-right: 15px;\r\n    border: 2px solid #333;\r\n}\r\n\r\nli.todo.done {\r\n    background-color: #333;\r\n}\r\n", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,UAAU;IACV,gBAAgB;AACpB;;AAEA;IACI,SAAS;AACb;;;;AAIA;IACI,cAAc;IACd,YAAY;IACZ,mBAAmB;IACnB,kBAAkB;IAClB,sBAAsB;AAC1B;;AAEA;IACI,sBAAsB;AAC1B","sourcesContent":["ul {\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\np {\r\n    margin: 0;\r\n}\r\n\r\n\r\n\r\nli .todo {\r\n    flex: 0 0 20px;\r\n    height: 20px;\r\n    border-radius: 30px;\r\n    margin-right: 15px;\r\n    border: 2px solid #333;\r\n}\r\n\r\nli.todo.done {\r\n    background-color: #333;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "ul {\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\np {\r\n    margin: 0;\r\n}\r\n\r\n\r\n\r\nli .todo {\r\n    flex: 0 0 20px;\r\n    height: 20px;\r\n    border-radius: 30px;\r\n    margin-right: 15px;\r\n    border: 2px solid #333;\r\n}\r\n\r\nli .todo.done {\r\n    background-color: #333;\r\n}", "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"AAAA;IACI,UAAU;IACV,gBAAgB;AACpB;;AAEA;IACI,SAAS;AACb;;;;AAIA;IACI,cAAc;IACd,YAAY;IACZ,mBAAmB;IACnB,kBAAkB;IAClB,sBAAsB;AAC1B;;AAEA;IACI,sBAAsB;AAC1B","sourcesContent":["ul {\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\np {\r\n    margin: 0;\r\n}\r\n\r\n\r\n\r\nli .todo {\r\n    flex: 0 0 20px;\r\n    height: 20px;\r\n    border-radius: 30px;\r\n    margin-right: 15px;\r\n    border: 2px solid #333;\r\n}\r\n\r\nli .todo.done {\r\n    background-color: #333;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -930,6 +930,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
+const ulContainer = document.querySelector('ul');
+const todos = [{
+  text: "aller faire les courses",
+  done: false
+}, {
+  text: "aller chercher les résultats",
+  done: true
+}];
+
+//fonction fléchée qui va creer et remplir une balise <li>
+const createTodoElement = todo => {
+  const li = document.createElement(`li`);
+  li.classList.add("d-flex", "align-items-start");
+  li.innerHTML = `
+        <span class="todo ${todo.done ? 'done' : ''}"></span>
+        <p class="w-100">${todo.text}</p>
+        <button class="btn btn-primary mx-2">Editer</button>
+        <button class="btn btn-danger mx-2">Supprimer</button>
+    `;
+  return li;
+};
+
+// fonction fléchée qui va afficher la liste des taches, map => array, filter => array, reduce => valeur
+const displayTodos = () => {
+  const todosNode = todos.map((todo, index) => {
+    return createTodoElement(todo);
+  });
+  ulContainer.innerHTML = '';
+  ulContainer.append(...todosNode);
+};
+displayTodos();
 })();
 
 /******/ })()
