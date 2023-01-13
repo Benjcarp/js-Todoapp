@@ -2,11 +2,23 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 const ulContainer = document.querySelector('ul');
+const form = document.querySelector("form");
+const input = document.querySelector("form > input");
 
 const todos = [
     { text: "aller faire les courses", done: false},
     { text: "aller chercher les résultats", done: true},
 ]
+
+form.addEventListener('submit',(event) => {
+    event.preventDefault(); // on arrete le rechargement de la page
+    const todoText = input.value; // je récupere le texte du input zone saisie
+    input.value = ''; // reinitialise la zone de saisie
+
+    const newTodo = {text: todoText, done: false};
+    todos.push(newTodo); // on ajoute la tache dans la liste des taches
+    displayTodos();
+})
 
 //fonction fléchée qui va creer et remplir une balise <li>
 const createTodoElement = (todo) => {
